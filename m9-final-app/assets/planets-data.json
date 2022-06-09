@@ -1,0 +1,104 @@
+{
+    "sun": {
+        "distEarthUa": 1,
+        "sizeKm": 1392684,
+        "surfTemp": 5476,
+        "chromoTemp": 99728,
+        "mass": 318256,
+        "rotation": 25,
+        "gravity": 27.9
+    },
+    "mercury": {
+        "distSunUa": 0.38,
+        "distSunKm": 56847190,
+        "distEarthUa": 0.62,
+        "sizeKm": 4878,
+        "surfTemp": 169,
+        "mass": 0.05,
+        "rotation": 58,
+        "gravity": 0.37,
+        "revAroundSun": 88
+    },
+    "venus": {
+        "distSunUa": 0.72,
+        "distSunKm": 107710466,
+        "distEarthUa": 0.28,
+        "sizeKm": 12102,
+        "surfTemp": 462,
+        "mass": 0.81,
+        "rotation": 243,
+        "gravity": 0.90,
+        "revAroundSun": 225
+    },
+    "earth": {
+        "distSunUa": 1,
+        "distSunKm": 149597870,
+        "distEarthUa": 0,
+        "sizeKm": 12756,
+        "surfTemp": 15,
+        "mass": 1,
+        "rotation": 1,
+        "gravity": 1,
+        "revAroundSun": 365
+    },
+    "mars": {
+        "distSunUa": 1.52,
+        "distSunKm": 227388762,
+        "distEarthUa": 0.52,
+        "sizeKm": 6792,
+        "surfTemp": -63,
+        "mass": 0.11,
+        "rotation": 1.02,
+        "gravity": 0.37,
+        "revAroundSun": 687,
+        "moons": 2
+    },
+    "jupiter": {
+        "distSunUa": 5.20,
+        "distSunKm": 777908924,
+        "distEarthUa": 4.20,
+        "sizeKm": 142984,
+        "surfTemp": -163,
+        "mass": 317.8,
+        "rotation": 0.41,
+        "gravity": 2.52,
+        "revAroundSun": 4332,
+        "moons": 60
+    },
+    "saturn": {
+        "distSunUa": 9.53,
+        "distSunKm": 1425667701,
+        "distEarthUa": 8.53,
+        "sizeKm": 120636,
+        "surfTemp": -189,
+        "mass": 95.2,
+        "rotation": 0.43,
+        "gravity": 1.06,
+        "revAroundSun": 10759,
+        "moons": 59
+    },
+    "uranus": {
+        "distSunUa": 19.18,
+        "distSunKm": 2869287146,
+        "distEarthUa": 18.14,
+        "sizeKm": 51118,
+        "surfTemp": -220,
+        "mass": 14.6,
+        "rotation": 0.75,
+        "gravity": 0.90,
+        "revAroundSun": 30685,
+        "moons": 5
+    },
+    "neptune": {
+        "distSunUa": 30,
+        "distSunKm": 4487936100,
+        "distEarthUa": 29,
+        "sizeKm": 49528,
+        "surfTemp": -218,
+        "mass": 17.2,
+        "rotation": 0.80,
+        "gravity": 1.13,
+        "revAroundSun": 60266,
+        "moons": 2
+    }
+}
