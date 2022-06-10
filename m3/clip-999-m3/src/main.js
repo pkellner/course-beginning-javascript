@@ -1,82 +1,21 @@
+import {
+  mercuryData,
+  venusData,
+  earthData,
+  marsData,
+  jupiterData,
+  saturnData,
+  uranusData,
+  neptuneData,
+} from "./planetData.js";
+
 const canvas = document.getElementById("solar-canvas");
 const context = canvas.getContext("2d", { alpha: false });
 
-const maxPlanetsToShow = 3;
+const maxPlanetsToShow = 8;
 
 const sunX = canvas.width / 2;
 const sunY = canvas.height / 2;
-
-const mercuryData = {
-  name: "Mercury",
-  color: "#ffffff",
-  radius: 1.85,
-  dist: 59,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.055,
-};
-
-const venusData = {
-  name: "Venus",
-  color: "#de5f25",
-  radius: 4.85,
-  dist: 90,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.022,
-};
-
-const earthData = {
-  name: "Earth",
-  color: "blue",
-  radius: 5.1,
-  dist: 110,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.013,
-};
-
-const marsData = {
-  name: "Mars",
-  color: "red",
-  radius: 3.0,
-  dist: 140,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.006,
-};
-
-const jupiterData = {
-  name: "Jupiter",
-  color: "orange",
-  radius: 11.1,
-  dist: 220,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.0015,
-};
-
-const saturnData = {
-  name: "Saturn",
-  color: "#a88b6d",
-  radius: 9.0,
-  dist: 320,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.001,
-};
-
-const uranusData = {
-  name: "Uranus",
-  color: "#9fc4ca",
-  radius: 7.3,
-  dist: 400,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.0003,
-};
-
-const neptuneData = {
-  name: "Neptune",
-  color: "#3454df",
-  radius: 7.07,
-  dist: 450,
-  angle: Math.random() * 20.0,
-  angleChangeRate: 0.0006,
-};
 
 const planetsData = [
   mercuryData,
@@ -88,6 +27,12 @@ const planetsData = [
   uranusData,
   neptuneData,
 ];
+
+
+
+
+
+
 
 let maxDistShowing = 0;
 planetsData.slice(0, maxPlanetsToShow).map(function (planetData) {
@@ -151,7 +96,7 @@ function drawOrbit(x, y, dist) {
 
 function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
   drawSpaceObject(name, color, radius, xStar, yStar);
-  
+
   planets.map(function (planet) {
     const planetX = sunX + planet.dist * Math.sin(planet.angle);
     const planetY = sunY + planet.dist * Math.cos(planet.angle);
@@ -161,5 +106,4 @@ function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
 }
 
 clear();
-debugger;
 drawStar(sunData);
