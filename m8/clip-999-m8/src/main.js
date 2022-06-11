@@ -20,10 +20,10 @@ let planetsData = [
   venusData,
   earthData,
   marsData,
-  jupiterData,
-  saturnData,
-  uranusData,
-  neptuneData,
+  // jupiterData,
+  // saturnData,
+  // uranusData,
+  // neptuneData,
 ];
 
 // START WITH THIS ONE
@@ -45,21 +45,12 @@ const scaleFactor = (canvas.width - 100) / (maxDistShowing * 2);
 //   planetsData[i].dist = planetsData[i].dist * scaleFactor;
 // }
 
-planetsData = planetsData.map(function (planet) {
-  return {
-    ...planet,
-    dist: planet.dist * scaleFactor,
-  };
-});
-
-const sunData = {
-  name: "Sun",
-  color: "yellow",
-  radius: 9,
-  x: sunX,
-  y: sunY,
-  planets: planetsData,
-};
+// planetsData = planetsData.map(function (planet) {
+//   return {
+//     ...planet,
+//     dist: planet.dist * scaleFactor,
+//   };
+// });
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -87,20 +78,59 @@ function drawOrbit(x, y, dist) {
   context.closePath();
 }
 
+const planet = ({ name, color, radius, dist, angle, angleChangeRate }) => {
+  let planetX;
+  let planetY;
+
+  return {
+    drawPlanet: function () {
+      planetX = sunX + dist * Math.sin(angle);
+      planetY = sunY + dist * Math.cos(angle);
+      drawSpaceObject(name, color, radius, planetX, planetY);
+    },
+    drawOrbit: function () {
+      drawOrbit(sunX, sunY, dist);
+    },
+    update: function () {
+      angle = angle + angleChangeRate;
+    },
+  };
+};
+
+planetsData = planetsData.map(function (planet) {
+  return {
+    ...planet,
+    dist: planet.dist * scaleFactor,
+  };
+});
+
+const planetObjects = planetsData.map(function (planetData) {
+  return planet(planetData);
+});
+
+const sunData = {
+  name: "Sun",
+  color: "yellow",
+  radius: 9,
+  x: sunX,
+  y: sunY,
+  planets: planetObjects,
+};
+
 function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
   drawSpaceObject(name, color, radius, xStar, yStar);
 
-  planets.map(function (planet, index) {
-    //const isEven = index % 2 === 0 ? true : false;
-    const isEven = index % 2 === 0;
-
-    //const planetX = sunX + planet.dist * isEven ? 1 : -1; // precedence problem
-    const planetX = sunX + planet.dist * (isEven ? 1 : -1); // Math.sin(earthData.angle);
-    const planetY = sunY + planet.dist * 0; // Math.cos(earthData.angle);
-    drawSpaceObject(planet.name, planet.color, planet.radius, planetX, planetY);
-    drawOrbit(sunX, sunY, planet.dist);
+  sunData.planets.map(function (planetObject) {
+    planetObject.drawOrbit();
+    planetObject.drawPlanet();
+    planetObject.update();
   });
 }
 
-clear();
-drawStar(sunData);
+function mainUpdate() {
+  clear();
+  drawStar(sunData);
+  const stopUpdate = requestAnimationFrame(mainUpdate); // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+}
+
+mainUpdate();

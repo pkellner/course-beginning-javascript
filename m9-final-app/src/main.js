@@ -6,8 +6,6 @@ const maxPlanetsToShow = 8;
 const sunX = canvas.width / 2;
 const sunY = canvas.height / 2;
 
-console.log(`sunX:${sunX}  sunY:${sunY}`);
-
 const mercuryData = {
   name: "Mercury",
   color: "#ffffff",
@@ -231,9 +229,6 @@ const sunData = {
 };
 
 let stopUpdate;
-
-if (!canvas) console.log("Impossible to get canvas");
-if (!context) console.log("Impossible to get canvas context");
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
