@@ -1,6 +1,3 @@
-import { planet } from "./planet.js";
-import { drawSpaceObject } from "./utils.js";
-
 import {
   mercuryData,
   venusData,
@@ -15,10 +12,8 @@ import {
 const canvas = document.getElementById("solar-canvas");
 const context = canvas.getContext("2d", { alpha: false });
 
-const sunPosition = {
-  x: canvas.width / 2,
-  y: canvas.height / 2,
-};
+const sunX = canvas.width / 2;
+const sunY = canvas.height / 2;
 
 let planetsData = [
   mercuryData,
@@ -61,6 +56,75 @@ function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function drawSpaceObject(name, color, radius, x, y) {
+  context.beginPath();
+  context.fillStyle = color;
+  context.arc(x, y, radius, 0, Math.PI * 2, true);
+  context.fill();
+  context.closePath();
+
+  context.font = "9px monospace";
+  context.fillStyle = "#ffffff";
+  context.textAlign = "center";
+  context.fillText(name, x, y - radius - 5);
+}
+
+function drawOrbit(x, y, dist) {
+  context.beginPath();
+  context.arc(x, y, dist, 0, Math.PI * 2, true);
+  context.lineWidth = 0.5;
+  context.strokeStyle = "white";
+  context.stroke();
+  context.closePath();
+}
+
+
+
+const planet = ({ name, color, radius, dist, angle, angleChangeRate, moonDataList }) => {
+  let planetX;
+  let planetY;
+  let moons = [];
+  
+  const moon = ({ name, color, radius, dist, angle, angleChangeRate }) => {
+    return {
+      drawMoon: function (planetX, planetY) {
+        const moonX = planetX + dist * Math.sin(angle);
+        const moonY = planetY + dist * Math.cos(angle);
+        drawSpaceObject(name, color, radius, moonX, moonY);
+      },
+      update: function () {
+        angle = angle + angleChangeRate;
+      },
+    };
+  };
+  
+  if (moonDataList) {
+    moonDataList.map(function (moonData) {
+      moons.push(moon(moonData));
+    });
+  }
+
+  return {
+    drawPlanet: function () {
+      planetX = sunX + dist * Math.sin(angle);
+      planetY = sunY + dist * Math.cos(angle);
+      drawSpaceObject(name, color, radius, planetX, planetY);
+      moons.map(function (moon) {
+        moon.drawMoon(planetX, planetY);
+      });
+    },
+    drawOrbit: function () {
+      drawOrbit(sunX, sunY, dist);
+    },
+    update: function () {
+      angle = angle + angleChangeRate;
+      moons.map(function (moon) {
+        moon.update();
+      });
+    },
+  };
+};
+
 planetsData = planetsData.map(function (planet) {
   return {
     ...planet,
@@ -69,23 +133,23 @@ planetsData = planetsData.map(function (planet) {
 });
 
 const planetObjects = planetsData.map(function (planetData) {
-  return planet(sunPosition, planetData, context);
+  return planet(planetData);
 });
 
 const sunData = {
   name: "Sun",
   color: "yellow",
   radius: 9,
-  x: sunPosition.x,
-  y: sunPosition.y,
+  x: sunX,
+  y: sunY,
   planets: planetObjects,
 };
 
 function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
-  drawSpaceObject(context, name, color, radius, xStar, yStar);
+  drawSpaceObject(name, color, radius, xStar, yStar);
 
   sunData.planets.map(function (planetObject) {
-    planetObject.drawPlanetOrbit();
+    planetObject.drawOrbit();
     planetObject.drawPlanet();
     planetObject.update();
   });

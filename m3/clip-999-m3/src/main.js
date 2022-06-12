@@ -1,15 +1,19 @@
 const canvas = document.getElementById("solar-canvas");
 const context = canvas.getContext("2d", { alpha: false });
 
-const sunX = 190;
-const sunY = 150;
+const sunPosition = {
+  x: 190,
+  y: 150,
+};
+
+
 
 const sunData = {
   name: "Sun",
   color: "yellow",
   radius: 9,
-  x: sunX,
-  y: sunY,
+  x: sunPosition.x,
+  y: sunPosition.y,
 };
 
 const earthData = {
@@ -24,7 +28,7 @@ const earthData = {
 function drawSpaceObject(name, color, radius, x, y) {
   context.beginPath();
   context.fillStyle = color;
-  context.arc(x, y, radius, 0, 6.2831853, true);
+  context.arc(x, y, radius, 0,3.14159265 * 2, true);
   context.fill();
   context.closePath();
 
@@ -47,7 +51,7 @@ function drawStar({
 
 function drawOrbit(x, y, dist) {
   context.beginPath();
-  context.arc(x, y, dist, 0, 6.2831853, true);
+  context.arc(x, y, dist, 0, 3.14159265 * 2, true);
   context.lineWidth = 0.5;
   context.strokeStyle = "white";
   context.stroke();
@@ -59,11 +63,14 @@ drawStar(sunData);
 
 const planetX = sunX + earthData.dist * 1; // Math.sin(earthData.angle);
 const planetY = sunY + earthData.dist * 0; // Math.cos(earthData.angle);
-drawSpaceObject(earthData.name, earthData.color, earthData.radius, planetX, planetY);
+drawSpaceObject(
+  earthData.name,
+  earthData.color,
+  earthData.radius,
+  planetX,
+  planetY
+);
 drawOrbit(sunX, sunY, earthData.dist);
-
-
-
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
