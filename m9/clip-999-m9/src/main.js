@@ -1,5 +1,4 @@
 import { planet } from "./planet.js";
-import { drawSpaceObject } from "./utils.js";
 
 import {
   mercuryData,
@@ -11,6 +10,7 @@ import {
   uranusData,
   neptuneData,
 } from "./planetData.js";
+import { drawStar } from "./drawStar.js";
 
 const canvas = document.getElementById("solar-canvas");
 const context = canvas.getContext("2d", { alpha: false });
@@ -25,7 +25,7 @@ let planetsData = [
   venusData,
   earthData,
   marsData,
-  // jupiterData,
+  jupiterData,
   // saturnData,
   // uranusData,
   // neptuneData,
@@ -81,19 +81,9 @@ const sunData = {
   planets: planetObjects,
 };
 
-function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
-  drawSpaceObject(context, name, color, radius, xStar, yStar);
-
-  sunData.planets.map(function (planetObject) {
-    planetObject.drawPlanetOrbit();
-    planetObject.drawPlanet();
-    planetObject.update();
-  });
-}
-
 function mainUpdate() {
   clear();
-  drawStar(sunData);
+  drawStar(context,  sunData);
   const stopUpdate = requestAnimationFrame(mainUpdate); // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
 }
 

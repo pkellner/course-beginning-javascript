@@ -6,8 +6,6 @@ const sunPosition = {
   y: 150,
 };
 
-
-
 const sunData = {
   name: "Sun",
   color: "yellow",
@@ -28,7 +26,7 @@ const earthData = {
 function drawSpaceObject(name, color, radius, x, y) {
   context.beginPath();
   context.fillStyle = color;
-  context.arc(x, y, radius, 0,3.14159265 * 2, true);
+  context.arc(x, y, radius, 0, 3.14159265 * 2, true);
   context.fill();
   context.closePath();
 
@@ -36,6 +34,15 @@ function drawSpaceObject(name, color, radius, x, y) {
   context.fillStyle = "#ffffff";
   context.textAlign = "center";
   context.fillText(name, x, y - radius - 5);
+}
+
+function drawOrbit(x, y, dist) {
+  context.beginPath();
+  context.arc(x, y, dist, 0, 3.14159265 * 2, true);
+  context.lineWidth = 0.5;
+  context.strokeStyle = "white";
+  context.stroke();
+  context.closePath();
 }
 
 // object spreading
@@ -47,15 +54,6 @@ function drawStar({
   y: yStar,
 }) {
   drawSpaceObject(starName, starColor, starRadius, xStar, yStar);
-}
-
-function drawOrbit(x, y, dist) {
-  context.beginPath();
-  context.arc(x, y, dist, 0, 3.14159265 * 2, true);
-  context.lineWidth = 0.5;
-  context.strokeStyle = "white";
-  context.stroke();
-  context.closePath();
 }
 
 clear();
