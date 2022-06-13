@@ -78,13 +78,19 @@ function drawOrbit(x, y, dist) {
   context.closePath();
 }
 
-
-
-const planet = ({ name, color, radius, dist, angle, angleChangeRate, moonDataList }) => {
+const planet = ({
+  name,
+  color,
+  radius,
+  dist,
+  angle,
+  angleChangeRate,
+  moonDataList,
+}) => {
   let planetX;
   let planetY;
   let moons = [];
-  
+
   const moon = ({ name, color, radius, dist, angle, angleChangeRate }) => {
     return {
       drawMoon: function (planetX, planetY) {
@@ -97,7 +103,7 @@ const planet = ({ name, color, radius, dist, angle, angleChangeRate, moonDataLis
       },
     };
   };
-  
+
   if (moonDataList) {
     moonDataList.map(function (moonData) {
       moons.push(moon(moonData));

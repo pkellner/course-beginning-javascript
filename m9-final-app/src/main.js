@@ -136,10 +136,7 @@ planetsData.slice(0, maxPlanetsToShow).map(function (planetData) {
 
 // 100 represents buffer for edges, and * 2 is radius x 2
 const scaleFactor = (canvas.width - 100) / (maxDistShowing * 2);
-const speedFactor = .1
-;
-
-
+const speedFactor = 0.1;
 for (let i = 0; i < maxPlanetsToShow; i++) {
   planetsData[i].dist = planetsData[i].dist * scaleFactor;
   planetsData[i].angleChangeRate = planetsData[i].angleChangeRate * speedFactor;

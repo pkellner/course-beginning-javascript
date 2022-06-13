@@ -1,9 +1,7 @@
-
-
 const planetName = "Earth";
 const planetAssociatedStar = "Sun";
 const planetDiameter = 8000;
-const planetGravity = 32.2; 
+const planetGravity = 32.2;
 
 const planetEarth = {
   name: "Earth",
@@ -30,8 +28,7 @@ console.log(planets[1]);
 console.log(planets.length);
 
 function showDate(name) {
-  console.log("Hello " + name + " The date and Time is " +
-    new Date);
+  console.log("Hello " + name + " The date and Time is " + new Date());
 }
 
 const name = "John";
@@ -44,4 +41,4 @@ function getRadiusFromDiameter(diameter) {
 }
 
 const radius = getRadiusFromDiameter(planetEarth.diameter);
-console.log(radius); 
+console.log(radius);

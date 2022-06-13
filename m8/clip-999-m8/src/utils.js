@@ -1,4 +1,4 @@
-function drawSpaceObject(context,name, color, radius, x, y) {
+function drawSpaceObject(context, name, color, radius, x, y) {
   context.beginPath();
   context.fillStyle = color;
   context.arc(x, y, radius, 0, Math.PI * 2, true);

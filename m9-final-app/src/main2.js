@@ -21,7 +21,7 @@ const planet = ({
       drawSpaceObject(name, color, radius, x, y);
     },
     drawOrbit: function () {
-      drawOrbit(sunX,sunY,dist);
+      drawOrbit(sunX, sunY, dist);
     },
     update: function () {
       angle = angle + angleChangeRate;

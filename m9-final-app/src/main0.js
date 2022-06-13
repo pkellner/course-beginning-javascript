@@ -5,15 +5,15 @@ const sunX = canvas.width / 2;
 const sunY = canvas.height / 2;
 
 const planet = ({
-                  name,
-                  color,
-                  radius,
-                  dist,
-                  angle,
-                  angleChangeRate,
-                  sunX,
-                  sunY,
-                }) => {
+  name,
+  color,
+  radius,
+  dist,
+  angle,
+  angleChangeRate,
+  sunX,
+  sunY,
+}) => {
   return {
     drawPlanet: function () {
       let x = sunX + dist * Math.sin(angle);
@@ -21,7 +21,7 @@ const planet = ({
       drawSpaceObject(name, color, radius, x, y);
     },
     drawOrbit: function () {
-      drawOrbit(sunX,sunY,dist);
+      drawOrbit(sunX, sunY, dist);
     },
     update: function () {
       angle = angle + angleChangeRate;
@@ -141,7 +141,7 @@ function drawSpaceObject(name, color, radius, x, y) {
   context.arc(x, y, radius, 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
-  
+
   context.font = "14px monospace";
   context.fillStyle = "#ffffff";
   context.textAlign = "center";
@@ -159,7 +159,7 @@ function drawOrbit(x, y, dist) {
 
 function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
   drawSpaceObject(name, color, radius, xStar, yStar);
-  
+
   planets.map(function (xxx) {
     xxx.drawOrbit();
     xxx.drawPlanet();
@@ -170,7 +170,7 @@ function drawStar({ name, color, radius, x: xStar, y: yStar, planets }) {
 function mainUpdate() {
   clear();
   drawStar(sun);
-  
+
   stopUpdate = requestAnimationFrame(mainUpdate); // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
 }
 

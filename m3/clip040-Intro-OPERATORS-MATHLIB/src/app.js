@@ -15,7 +15,7 @@ const sunData = {
   radius: 9,
   x: sunPosition.x,
   y: sunPosition.y,
-}
+};
 
 function clear(context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -24,7 +24,7 @@ function clear(context) {
 function drawStar(context, { color, name, radius, x, y }) {
   context.beginPath();
   context.fillStyle = color;
-  context.arc(x, y, radius, 0, Math.PI * 2, true); 
+  context.arc(x, y, radius, 0, Math.PI * 2, true);
   context.fill();
   context.closePath();
 }

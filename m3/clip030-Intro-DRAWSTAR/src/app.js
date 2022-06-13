@@ -15,7 +15,7 @@ const sunData = {
   radius: 9,
   x: sunPosition.x,
   y: sunPosition.y,
-}
+};
 
 function clear(context) {
   context.clearRect(0, 0, canvas.width, canvas.height);

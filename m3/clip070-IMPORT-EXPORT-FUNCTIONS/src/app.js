@@ -15,7 +15,7 @@ const sunData = {
   radius: 9,
   x: sunPosition.x,
   y: sunPosition.y,
-}
+};
 
 const earthData = {
   name: "Earth",
@@ -24,7 +24,7 @@ const earthData = {
   dist: 110,
   angle: Math.PI / 2,
   angleChangeRate: 0.013,
-}
+};
 
 function clear(context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,6 +35,12 @@ drawStar(context, sunData);
 
 const planetX = sunPosition.x + earthData.dist * 1;
 const planetY = sunPosition.y + earthData.dist * 0;
-drawSpaceObject(context, earthData.color, earthData.name, earthData.radius,
-  planetX, planetY);
+drawSpaceObject(
+  context,
+  earthData.color,
+  earthData.name,
+  earthData.radius,
+  planetX,
+  planetY
+);
 drawOrbit(context, sunPosition.x, sunPosition.y, earthData.dist);

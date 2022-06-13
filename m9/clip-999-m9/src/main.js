@@ -83,7 +83,7 @@ const sunData = {
 
 function mainUpdate() {
   clear();
-  drawStar(context,  sunData);
+  drawStar(context, sunData);
   const stopUpdate = requestAnimationFrame(mainUpdate); // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
 }
 
