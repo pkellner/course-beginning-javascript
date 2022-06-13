@@ -4,5 +4,5 @@ export function drawOrbit(context, x, y, dist) {
   context.lineWidth = 0.5;
   context.strokeStyle = "white";
   context.stroke();
-  context.closePath();ß
+  context.closePath();
 }
