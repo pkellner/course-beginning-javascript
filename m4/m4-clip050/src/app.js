@@ -9,14 +9,14 @@ const sunPosition = {
 };
 
 const planets = [mercuryData, venusData, earthData];
-const planetsData = [{
+const planetsData = [...planets,{
   name: "Mars",
   color: "red",
   radius: 3.0,
   dist: 140,
   angle: 0,
   angleChangeRate: 0.006,
-},...planets];
+}];
 
 const sunData = {
   name: "Sun",
