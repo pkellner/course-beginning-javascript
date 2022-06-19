@@ -1,14 +1,15 @@
 import { drawSpaceObject } from "./drawSpaceObject.js";
 import { drawOrbit } from "./drawOrbit.js";
 
-export function drawStar(context, { color, name, radius, x: xStar, y: yStar,
-  planets, scaleFactor }) {
+export function drawStar(
+  context,
+  { color, name, radius, x: xStar, y: yStar, planets, scaleFactor }
+) {
   drawSpaceObject(context, color, name, radius, xStar, yStar);
   planets.forEach(function (planet, index) {
     const isEven = index % 2 === 0;
-    const planetX = xStar + (planet.dist * 1 * (isEven ? 1 : -1) *
-      scaleFactor);
-    const planetY = yStar + (planet.dist * 0 * scaleFactor);
+    const planetX = xStar + planet.dist * 1 * (isEven ? 1 : -1) * scaleFactor;
+    const planetY = yStar + planet.dist * 0 * scaleFactor;
     drawSpaceObject(
       context,
       planet.color,
@@ -17,6 +18,6 @@ export function drawStar(context, { color, name, radius, x: xStar, y: yStar,
       planetX,
       planetY
     );
-    drawOrbit(context, xStar, yStar, planet.dist * scaleFactor)
+    drawOrbit(context, xStar, yStar, planet.dist * scaleFactor);
   });
 }

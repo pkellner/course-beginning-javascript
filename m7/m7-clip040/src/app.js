@@ -2,22 +2,37 @@ const canvas = document.getElementById("solar-canvas");
 const context = canvas.getContext("2d", { alpha: false });
 import { drawStar } from "./lib/drawStar.js";
 import {
-  mercuryData, venusData, earthData,
-  marsData, jupiterData, saturnData, uranusData, neptuneData
-}
-  from "./lib/planetData.js";
+  mercuryData,
+  venusData,
+  earthData,
+  marsData,
+  jupiterData,
+  saturnData,
+  uranusData,
+  neptuneData,
+} from "./lib/planetData.js";
 
 const sunPosition = {
   x: 190,
   y: 150,
 };
 
-const planets = [mercuryData, venusData, earthData,
-  marsData, jupiterData, saturnData, uranusData, neptuneData];
+const planets = [
+  mercuryData,
+  venusData,
+  earthData,
+  marsData,
+  jupiterData,
+  saturnData,
+  uranusData,
+  neptuneData,
+];
 
-const maxDistanceShowing = Math.max(...planets.map(function (pl) {
-  return pl.dist;
-}));
+const maxDistanceShowing = Math.max(
+  ...planets.map(function (pl) {
+    return pl.dist;
+  })
+);
 
 const scaleFactor = (canvas.width - 100) / (maxDistanceShowing * 2);
 

@@ -14,7 +14,7 @@ export const mercuryData = {
   dist: 59,
   angle: Math.PI / 2,
   angleChangeRate: 0.055,
-}
+};
 
 export const venusData = {
   name: "Venus",
@@ -23,7 +23,7 @@ export const venusData = {
   dist: 90,
   angle: Math.PI / 2,
   angleChangeRate: 0.022,
-}
+};
 
 export const marsData = {
   name: "Mars",
