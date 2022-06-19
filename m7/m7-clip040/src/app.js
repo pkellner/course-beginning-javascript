@@ -21,7 +21,6 @@ const maxDistanceShowing = Math.max(...planets.map(function (pl) {
 
 const scaleFactor = (canvas.width - 100) / (maxDistanceShowing * 2);
 
-
 const sunData = {
   name: "Sun",
   color: "yellow",

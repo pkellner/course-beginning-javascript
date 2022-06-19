@@ -15,12 +15,9 @@ const sunPosition = {
 const planets = [mercuryData, venusData, earthData,
   marsData, jupiterData, saturnData, uranusData, neptuneData];
 
-let maxDistanceShowing = 0;
-planets.forEach(function (planetData) {
-  if (maxDistanceShowing < planetData.dist) {
-    maxDistanceShowing = planetData.dist;
-  }
-});
+const maxDistanceShowing = Math.max(...planets.map(function (pl) {
+  return pl.dist;
+}));
 
 const scaleFactor = (canvas.width - 100) / (maxDistanceShowing * 2);
 
