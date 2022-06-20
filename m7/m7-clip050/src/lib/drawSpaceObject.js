@@ -5,8 +5,8 @@ export function drawSpaceObject(context, color, name, radius, x, y) {
   context.fill();
   context.closePath();
 
-  context.font = "9px monospace";
-  context.fillStyle = "#ffffff";
-  context.textAlign = "center";
+  context.font = '9px monospace';
+  context.fillStyle = '#ffffff';
+  context.textAlign = 'center';
   context.fillText(name, x, y - radius - 5);
 }

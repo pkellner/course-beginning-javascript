@@ -6,10 +6,23 @@ export function drawStar(
   { color, name, radius, x: xStar, y: yStar, planetFunctions },
 ) {
   drawSpaceObject(context, color, name, radius, xStar, yStar);
+  
   planetFunctions.forEach(function (planetFunction) {
     planetFunction.drawPlanet();
     planetFunction.drawPlanetOrbit();
-    planetFunction.update();
-    
   });
+  
+  // planets.forEach(function (planet) {
+  //   const planetX = xStar + planet.dist;
+  //   const planetY = yStar;
+  //   drawSpaceObject(
+  //     context,
+  //     planet.color,
+  //     planet.name,
+  //     planet.radius,
+  //     planetX,
+  //     planetY,
+  //   );
+  //   drawOrbit(context, xStar, yStar, planet.dist);
+  // });
 }

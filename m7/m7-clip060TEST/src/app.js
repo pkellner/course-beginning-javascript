@@ -1,15 +1,31 @@
+import {planetFunction} from "./lib/planetFunction.js";
+
 const canvas = document.getElementById('solar-canvas');
 const context = canvas.getContext('2d', { alpha: false });
 import { drawStar } from './lib/drawStar.js';
-import { mercuryData, venusData, earthData, marsData, jupiterData,
-  saturnData, uranusData, neptuneData
+import {
+  mercuryData,
+  venusData,
+  earthData,
+  marsData,
+  jupiterData,
+  saturnData,
+  uranusData,
+  neptuneData,
 } from './lib/planetData.js';
-import { planetFunction } from './lib/planetFunction.js';
 
 const sunPosition = { x: 190, y: 150 };
 
-const planets = [mercuryData, venusData, earthData, marsData, jupiterData,
-  saturnData, uranusData, neptuneData];
+const planets = [
+  mercuryData,
+  venusData,
+  earthData,
+  marsData,
+  jupiterData,
+  saturnData,
+  uranusData,
+  neptuneData,
+];
 
 const maxDistanceShowing = Math.max(
   ...planets.map(function (pl) {
@@ -27,8 +43,8 @@ const planetsData = planets.map(function (planet) {
 });
 
 const planetFunctions = planetsData.map(function (planetData) {
-  return planetFunction(sunPosition, planetData, context);
-})
+  return planetFunction(sunPosition, planetsData, context);
+});
 
 const sunData = {
   name: 'Sun',
@@ -36,7 +52,7 @@ const sunData = {
   radius: 9,
   x: sunPosition.x,
   y: sunPosition.y,
-  planetFunctions,
+  planets: planetFunctions,
 };
 
 function clear(context) {

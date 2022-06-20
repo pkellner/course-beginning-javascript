@@ -1,9 +1,9 @@
-import { drawSpaceObject } from "./drawSpaceObject.js";
-import { drawOrbit } from "./drawOrbit.js";
+import { drawSpaceObject } from './drawSpaceObject.js';
+import { drawOrbit } from './drawOrbit.js';
 
 export function drawStar(
   context,
-  { color, name, radius, x: xStar, y: yStar, planets }
+  { color, name, radius, x: xStar, y: yStar, planets },
 ) {
   drawSpaceObject(context, color, name, radius, xStar, yStar);
   planets.forEach(function (planet) {
@@ -15,7 +15,7 @@ export function drawStar(
       planet.name,
       planet.radius,
       planetX,
-      planetY
+      planetY,
     );
     drawOrbit(context, xStar, yStar, planet.dist);
   });
