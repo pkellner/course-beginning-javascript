@@ -1,5 +1,4 @@
 function myFunc() {
-  const planets = ['Mercury', 'Venus', 'Earth'];
   let abc = 101;
   return {
     logAbc: function () {
