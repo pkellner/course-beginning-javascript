@@ -44,5 +44,9 @@ function clear(context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-clear(context);
-drawStar(context, sunData);
+
+
+setInterval(function () {
+  clear(context);
+  drawStar(context, sunData);
+}, 20);

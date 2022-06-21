@@ -17,6 +17,7 @@ export const planetFunction = (
       drawOrbit(context, sunX, sunY, dist);
     },
     update: function () {
+      angle = angle + angleChangeRate;
     },
   };
 };
