@@ -10,6 +10,5 @@ export function drawStar(
     planetFunction.drawPlanet();
     planetFunction.drawPlanetOrbit();
     planetFunction.update();
-    
   });
 }
