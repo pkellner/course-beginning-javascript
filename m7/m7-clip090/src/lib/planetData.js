@@ -5,6 +5,16 @@ export const earthData = {
   dist: 110,
   angle: Math.PI / 2,
   angleChangeRate: 0.013,
+  moonDataList: [
+    {
+      name: "",
+      color: "white",
+      radius: 1.0,
+      dist: 10,
+      angle: 0.0,
+      angleChangeRate: 0.013 * 12,
+    },
+  ]
 };
 
 export const mercuryData = {
@@ -32,6 +42,24 @@ export const marsData = {
   dist: 140,
   angle: Math.PI / 2,
   angleChangeRate: 0.006,
+  moonDataList: [
+    {
+      name: "",
+      color: "white",
+      radius: 1,
+      dist: 5,
+      angle: 0.0,
+      angleChangeRate: 0.006 * 30,
+    },
+    {
+      name: "",
+      color: "white",
+      radius: 1,
+      dist: 9,
+      angle: 0,
+      angleChangeRate: 0.006 * 45,
+    },
+  ]
 };
 
 export const jupiterData = {
